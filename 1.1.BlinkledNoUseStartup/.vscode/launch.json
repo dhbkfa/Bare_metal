@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+
+    "configurations": [
+        {
+            "name": "Debug STM32F411",
+            "type": "cortex-debug",
+            "request": "launch",
+
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/blink.elf",
+
+            "servertype": "stlink",
+            "device": "STM32F411CEU6",
+            "interface": "swd",
+
+            "stm32cubeprogrammer": "/home/hieule/st/stm32cubeclt_1.22.0/STM32CubeProgrammer/bin",
+
+            "runToEntryPoint": "main"
+        }
+    ]
+}
