@@ -5,10 +5,10 @@ SIZE	= arm-none-eabi-size
 MCU_FLAGS	= -mcpu=cortex-m4 -mthumb -mfloat-abi=soft
 CFLAGS		= ${MCU_FLAGS} -Wall -Wextra -O0 -g3 -ffreestanding -fdata-sections -ffunction-sections  
 LDFLAGS		= ${MCU_FLAGS} -T linker/linker.ld -nostdlib -nostartfiles -Wl,--gc-sections -Wl,-Map=${Target}.map
-SRCS		= src/main.c 
+SRCS		= src/main.c src/gpio.c
 all: ${Target}.elf ${Target}.bin ${Target}.hex
 
-${Target}.elf: ${SRC} linker/linker.ld
+${Target}.elf: ${SRCS} linker/linker.ld 
 	${CC} ${CFLAGS} ${LDFLAGS} ${SRCS} -o $@
 	${SIZE} $@
 
