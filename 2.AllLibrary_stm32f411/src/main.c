@@ -4,7 +4,8 @@
                                      
 void main(void)
 {
-    blinkled('C',13,GPIO_MODE_OUTPUT,16000000U);
+    systick_init(16000000);
+    blinkled('C',13,GPIO_MODE_OUTPUT,500);
     return;
     
 }

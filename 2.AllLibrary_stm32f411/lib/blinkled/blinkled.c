@@ -20,12 +20,6 @@ void blinkled(char GPIOx,const int pinx,uint8_t Mode,const uint32_t period_ms)
         
     }
     
-    // for (;;)
-    // {
-    //     gpio_write(led,true);
-    //     spin(999999);
-    //     gpio_write(led,false);
-    //     spin(999999);
-    // }
+
 }
 
