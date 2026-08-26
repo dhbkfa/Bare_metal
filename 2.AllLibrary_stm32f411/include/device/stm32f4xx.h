@@ -1,21 +1,11 @@
 #ifndef STM32F4xx_H
 #define STM32F4xx_H
-#include <stdbool.h>
-#include <stdint.h>
-#include <stdio.h>
-#include <sys/types.h>
-// Quy uoc dat bit
-#define BIT(x)   (1UL << (x))
-#define PIN(bank,num) (((bank - 'A') << 8) | (num))
-#define PINNO(pin)    (pin & 255)   
-#define PINBANK(pin)    (pin >> 8)
+#include "../include_common.h"
 
 // Define all peripheral
 /* PERIPHARAL BASE*/
 #define PERIPH_BASE         (0x40000000UL)
 #define Internal_BASE   	(0xE0000000UL)
-
-
 
 // OFFSET ADDRESS
 #define AHB1_OFFSET         (0x00020000UL) 
@@ -75,6 +65,24 @@ struct rcc
     volatile uint32_t RESERVED7;
     volatile uint32_t DCKCFGR;
 };
-
-
+/* Định nghĩa các thanh ghi cho gpio */
+struct gpio {
+    volatile uint32_t
+        MODER,
+        OTYPER,
+        OSPEEDR,
+        PUPDR,
+        IDR,
+        ODR,
+        BSRR,
+        LCKR,
+        AFR[2];
+};
+// Enum values are per datasheet : 0 , 1 , 2 , 3
+enum{
+    GPIO_MODE_INPUT,
+    GPIO_MODE_OUTPUT,
+    GPIO_MODE_AF,
+    GPIO_MODE_ANALOG
+};
 #endif

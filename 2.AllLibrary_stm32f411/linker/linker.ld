@@ -1,17 +1,22 @@
-MEMORY{
+MEMORY
+{
     FLASH   (rx)  : ORIGIN = 0x08000000, LENGTH = 512K
-    SRAM    (rwx) : ORIGIN = 0x20000000, LENGTH = 128K
-}
-ENTRY(Reset_Handler);
-_estack = ORIGIN(SRAM) + LENGTH(SRAM);
+    RAM     (rwx) : ORIGIN = 0x20000000, LENGTH = 128K
 
-SECTIONS{
+}
+ENTRY(Reset_Handler)
+_estack = ORIGIN(RAM) + LENGTH(RAM);
+_Min_Heap_Size  = 0x200;
+_Min_Stack_Size = 0x400;
+SECTIONS
+{
     .isr_vector :
     {
         . = ALIGN(4);
         KEEP(*(.isr_vector))
         . = ALIGN(4);
-    } > FLASH
+    } >FLASH
+    /*Ma lenh va du lieu chi doc*/
     .text :
     {
         . = ALIGN(4);
@@ -21,7 +26,7 @@ SECTIONS{
         *(.rodata*)
         . = ALIGN(4);
         _etext = .;
-    } > FLASH
+    } >FLASH
     _sidata = LOADADDR(.data);
     .data :
     {
@@ -31,17 +36,22 @@ SECTIONS{
         *(.data*)
         . = ALIGN(4);
         _edata = .;
-    } > SRAM AT > FLASH
+    } >RAM AT> FLASH
     .bss :
     {
         . = ALIGN(4);
         _sbss = .;
         *(.bss)
         *(.bss*)
-        *(COMMON)  /* gom cac bien chua duoc khoi tao */
+        *(COMMON)
         . = ALIGN(4);
         _ebss = .;
-    } > SRAM
-    . = ALIGN(8);
-    end = .;
+    } >RAM
+    ._user_heap_stack :
+    {
+        . = ALIGN(8);
+        . = . + _Min_Heap_Size;
+        . = . + _Min_Stack_Size;
+        . = ALIGN(8);
+    } >RAM
 }

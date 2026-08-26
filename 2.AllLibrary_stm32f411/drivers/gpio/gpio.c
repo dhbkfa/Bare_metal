@@ -1,14 +1,10 @@
-#include "../lib/gpio.h"
+#include "gpio.h"
 
 void gpio_write(uint16_t pin , bool val)
 {
     struct gpio* gpio = GPIO(PINBANK(pin));
     gpio->BSRR = (1U << PINNO(pin)) << (val ? 0 : 16);
     
-}
-void spin(volatile uint32_t count)
-{
-    while (count--)(void)0;
 }
 void gpio_set_mode(uint16_t pin,uint8_t mode)
 {

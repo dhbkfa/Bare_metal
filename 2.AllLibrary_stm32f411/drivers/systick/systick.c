@@ -1,7 +1,8 @@
-#include "../lib/systick.h"
+#include "systick.h"
 
-extern volatile uint32_t s_ticks = 0;
-void systick_init(uint32_t ticks){
+volatile uint32_t s_ticks = 0;
+void systick_init(uint32_t tick_hz){
+	uint32_t ticks = (tick_hz / 1000U);
 	SYSTICK -> RVR = ticks - 1;
 	SYSTICK -> CVR = 0;
 	SYSTICK -> CSR = BIT(0) |  BIT(1) | BIT(2); 
