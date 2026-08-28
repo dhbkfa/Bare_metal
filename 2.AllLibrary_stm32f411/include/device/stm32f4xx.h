@@ -5,25 +5,26 @@
 // Define all peripheral
 /* PERIPHARAL BASE*/
 #define PERIPH_BASE         (0x40000000UL)
-#define Internal_BASE   	(0xE0000000UL)
+
 
 // OFFSET ADDRESS
 #define AHB1_OFFSET         (0x00020000UL) 
 #define RCC_OFFSET          (0x00003800UL) 
 #define GPIOB_OFFSET        (0x00000400UL)
-#define Systick_OFFSET	    (0x0000E010UL)
+#define FLASH_OFFSET        (0x00023C00UL)
 
 /* BASE ADDRESS */
 #define AHB1_BASE           (PERIPH_BASE + AHB1_OFFSET) // 0x4002 0000
 #define RCC_BASE            (AHB1_BASE + RCC_OFFSET) // 0x4002 3800
 #define GPIO_BASE           (AHB1_BASE)
+#define FLASH_BASE          (PERIPH_BASE + FLASH_OFFSET) //0x4002 3C00
 /*REGISTER*/
 #define GPIOB               (GPIO_BASE + GPIOB_OFFSET)
-#define Systick_Timer	    (Internal_BASE + Systick_OFFSET)
+
 /* Define GPIO*/
 #define GPIO(bank)  ((struct gpio*)((GPIO_BASE + (0x400*bank)))) // Cho phep lay dia chi cua cac GPIO: A,B,C
 #define RCC         ((struct rcc*)(RCC_BASE))
-#define SYSTICK     ((struct systick*) Systick_Timer) // Cho phep lay cac thanh ghi cau hinh trong systick
+
 // Khai báo toàn bộ configure clock có trong stm32f411
 struct rcc
 {
@@ -85,4 +86,33 @@ enum{
     GPIO_MODE_AF,
     GPIO_MODE_ANALOG
 };
+enum{
+    APB1_PRE = 4, /* AHB clock*/
+    APB2_PRE = 4
+};
+enum{
+    PLL_HSE = 16,
+    PLL_M = 8,
+    PLL_N = 100,
+    PLL_P = 2
+};
+/* Define clock system */
+#define FLASH_LATENCY   3
+#define SYS_FREQUENCY   ((PLL_HSE * PLL_N / PLL_M / PLL_P) * 1000000)
+#define APB2_FREQUENCY  (SYS_FREQUENCY / (BIT(APB2_PRE - 3)))
+#define APB1_FREQUENCY  (SYS_FREQUENCY / (BIT(APB1_PRE - 3)))
+/* The register control flash */
+struct flash
+{
+    volatile uint32_t ACR;          // Access control register
+    volatile uint32_t KEYR;         // Key register
+    volatile uint32_t OPTKEYR;      // Option key register 
+    volatile uint32_t SR;           // Status register
+    volatile uint32_t CR;           // Control register
+    volatile uint32_t OPTCR;        // Option control register
+
+
+};
+#define FLASH ((struct flash*) FLASH_BASE)
+
 #endif

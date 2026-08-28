@@ -1,6 +1,6 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 #include "../../include/cores/arm_cortex_m4.h"
-extern uint32_t SystemCoreClock;
-
+#include "../../include/device/stm32f4xx.h"
+void system_clock_init(void);
 #endif

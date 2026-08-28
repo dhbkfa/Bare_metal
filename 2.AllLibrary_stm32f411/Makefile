@@ -2,7 +2,7 @@ TARGET	= blink
 CC		= arm-none-eabi-gcc
 OBJCOPY	= arm-none-eabi-objcopy
 SIZE	= arm-none-eabi-size
-MCU_FLAGS	= -mcpu=cortex-m4 -mthumb -mfloat-abi=soft
+MCU_FLAGS	= -mcpu=cortex-m4 -mthumb -mfloat-abi=hard
 CFLAGS		= ${MCU_FLAGS} -Wall -Wextra -O0 -g3 -ffreestanding -fdata-sections -ffunction-sections
 LDFLAGS		= ${MCU_FLAGS} -T linker/linker.ld -nostdlib -Wl,--gc-sections -Wl,-Map=${TARGET}.map
 SRCS		= src/main.c \
