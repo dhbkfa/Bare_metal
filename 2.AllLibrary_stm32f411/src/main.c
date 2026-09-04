@@ -1,11 +1,18 @@
 
 #include "../lib/blinkled/blinkled.h"
-
+#include "../drivers/system/system.h"
                                      
 void main(void)
 {
-    systick_init(16000000);
-    blinkled('C',13,GPIO_MODE_OUTPUT,500);
+    
+    system_clock_init();
+    systick_init(SYS_FREQUENCY);
+    //blinkled('C',13,GPIO_MODE_OUTPUT,500);
+    blinkled('B',8,GPIO_MODE_OUTPUT,500);
+
+    //while (1);
     return;
+    
+    
     
 }

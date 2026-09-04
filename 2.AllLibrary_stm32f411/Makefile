@@ -22,7 +22,7 @@ ${TARGET}.hex: ${TARGET}.elf
 	${OBJCOPY} -O ihex $< $@
 
 flash: ${TARGET}.bin
-	st-flash write ${TARGET}.bin 0x8000000
+	st-flash --reset write ${TARGET}.bin 0x8000000
 
 clean:
 	rm -rf ${TARGET}.elf ${TARGET}.bin ${TARGET}.hex ${TARGET}.map

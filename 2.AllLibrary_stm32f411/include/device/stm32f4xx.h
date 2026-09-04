@@ -93,7 +93,7 @@ enum{
 enum{
     PLL_HSE = 16,
     PLL_M = 8,
-    PLL_N = 100,
+    PLL_N = 70,
     PLL_P = 2
 };
 /* Define clock system */

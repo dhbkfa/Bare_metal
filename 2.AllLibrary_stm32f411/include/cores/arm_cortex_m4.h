@@ -1,5 +1,5 @@
 #ifndef ARM_CORTEX_M4_H
-#define ARM_CORTEC_M4_H
+#define ARM_CORTEX_M4_H
 #include "../include_common.h"
 
 
