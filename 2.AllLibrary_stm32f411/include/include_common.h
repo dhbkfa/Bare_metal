@@ -10,7 +10,7 @@
 
 // Quy uoc dat bit
 #define BIT(x)   (1UL << (x))
-#define PIN(bank,num) (((bank - 'A') << 8) | (num))
+#define PIN(bank,num) ((uint16_t)(((bank - 'A') << 8) | (num)))
 #define PINNO(pin)    (pin & 255)   
 #define PINBANK(pin)    (pin >> 8)
 
