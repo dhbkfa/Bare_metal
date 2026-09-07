@@ -18,18 +18,15 @@ SRCS		= src/main.c \
 			  lib/blinkled/blinkled.c 
 all: ${TARGET}.elf ${TARGET}.bin ${TARGET}.hex
 # Transform source paths to object paths in the build directory
-<<<<<<< HEAD
-OBJS = $(addprefix $(TARGET)/, $(notdir $(SRCS:.c=.o)))
-DEPS = $(OBJS:.o=.d)
-vpath %.c . $(LIE)
-=======
-IOBJS = $(addprefix $(TARGET)/, $(notdir $(SRCS:.c=.0)))
+
+
+OBJS = $(addprefix $(TARGET)/, $(notdir $(SRCS:.c=.0)))
 # Transform object paths to dependency paths
 DEPS = $(OBJS:.o=.d)
 
 # Search paths for source files (so make can find them)
 vpath %.c . $(LIBDIR)
->>>>>>> 87ca032dc2466fa5a08bf729908f985fb26b6650
+
 # Tạo điều kiện và tìm các file cần thiết để chạy 
 ${TARGET}.elf: $(SRCS) linker/linker.ld
 	${CC} ${CFLAGS} ${LDFLAGS} ${SRCS} -o $@
