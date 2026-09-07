@@ -12,7 +12,6 @@ struct flash
     volatile uint32_t CR;           // Control register
     volatile uint32_t OPTCR;        // Option control register
 
-
 };
 #define FLASH ((struct flash*) FLASH_BASE)
 

@@ -38,7 +38,6 @@ void system_clock_init(void){
     if(!hse_enable()) // Wait for HSERDY
     {
         while (1);
-        
         //printf("High speed disabled after 1,000,000 loops");
     } 
     

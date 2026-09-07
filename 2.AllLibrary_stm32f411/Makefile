@@ -10,7 +10,10 @@ SRCS		= src/main.c \
 			  $(wildcard drivers/*/*.c) \
 			  lib/blinkled/blinkled.c 
 all: ${TARGET}.elf ${TARGET}.bin ${TARGET}.hex
-
+# Transform source paths to object paths in the build directory
+OBJS = $(addprefix $(TARGET)/, $(notdir $(SRCS:.c=.o)))
+DEPS = $(OBJS:.o=.d)
+vpath %.c . $(LIE)
 # Tạo điều kiện và tìm các file cần thiết để chạy 
 ${TARGET}.elf: $(SRCS) linker/linker.ld
 	${CC} ${CFLAGS} ${LDFLAGS} ${SRCS} -o $@
