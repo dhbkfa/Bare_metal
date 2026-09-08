@@ -1,7 +1,9 @@
 #ifndef USART_H
 #define USART_H
 #include "../../include/device/stm32f4xx.h"
-
+#include "../rcc/rcc.h"
+#include "../system/system.h"
+#include "../gpio/gpio.h"
 struct usart
 {
     /* 0x00 - Status register */
@@ -145,14 +147,15 @@ struct usart
     };
 };
 
-#define USART1 ((struct usart*)USART1_ADDRESS)
-#define USART2 ((struct usart*)USART2_ADDRESS)
-#define USART6 ((struct usart*)USART6_ADDRESS)
+#define USART1 ((struct usart*)(USART1_ADDRESS)) // APB2
+#define USART2 ((struct usart*)(USART2_ADDRESS)) // APB1
+#define USART6 ((struct usart*)(USART6_ADDRESS)) // APB2
 
 void usart_init(struct usart* usart,unsigned long baud);
 int usart_read_ready(struct usart* usart);
 int usart_write_ready(struct usart* usart);
-void usart_write_char(struct usart* usart);
+void usart_write_char(struct usart* usart,char ch);
 void usart_write_buf(struct usart* usart,char *buf,size_t len);
+uint8_t usart_read_byte(struct usart* usart);
 
 #endif

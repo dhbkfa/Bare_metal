@@ -13,12 +13,5 @@
 #define PIN(bank,num) ((uint16_t)(((bank - 'A') << 8) | (num)))
 #define PINNO(pin)    (pin & 255)   
 #define PINBANK(pin)    (pin >> 8)
-#define PPRE_BITS(x) \
-    ((x) == 1  ? 0x0U : \
-     (x) == 2  ? 0x4U : \
-     (x) == 4  ? 0x5U : \
-     (x) == 8  ? 0x6U : \
-     (x) == 16 ? 0x7U : \
-     0x0U)
-     
+#define PPRE_BITS(div) ((div) == 1 ? 0 :  (31 - __builtin_clz(div) + 3))
 #endif

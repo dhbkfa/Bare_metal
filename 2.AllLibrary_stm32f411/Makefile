@@ -9,7 +9,8 @@ CFLAGS		= ${MCU_FLAGS} -Wall -Wextra -Werror -Wundef -Wshadow -Wdouble-promotion
 				-Og -g3 -ffreestanding -fdata-sections -ffunction-sections \
 				-Wformat-truncation -fno-common -Wconversion -fno-strict-aliasing \
 				-MMD -MP -I. -I$(LIBDIR)
-LDFLAGS		= ${MCU_FLAGS} -T linker/linker.ld -nostdlib -Wl,--gc-sections -Wl,-Map=${TARGET}.map
+LDFLAGS		= ${MCU_FLAGS} -T linker/linker.ld -nostdlib --specs nano.specs \
+				-lc -lgcc -Wl,--gc-sections -Wl,-Map=${TARGET}.map
 
 
 SRCS		= src/main.c \

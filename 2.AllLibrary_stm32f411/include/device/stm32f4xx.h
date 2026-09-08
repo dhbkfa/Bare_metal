@@ -19,8 +19,8 @@
 #define USART2_OFFSET       (0x00004400UL)
 /* BASE ADDRESS */
 #define AHB1_BASE           (PERIPH_BASE + AHB1_OFFSET) // 0x4002 0000
-#define APB2_BASE           (PERIPH_BASE + APB2_BASE)  // 0x4001 0000
-#define APB1_BASE           (PERIPH_BASE + APB1_BASE)  // 0x4000 0000
+#define APB2_BASE           (PERIPH_BASE + APB2_OFFSET)  // 0x4001 0000
+#define APB1_BASE           (PERIPH_BASE + APB1_OFFSET)  // 0x4000 0000
 
 #define RCC_BASE            (AHB1_BASE + RCC_OFFSET) // 0x4002 3800
 #define GPIO_BASE           (AHB1_BASE)

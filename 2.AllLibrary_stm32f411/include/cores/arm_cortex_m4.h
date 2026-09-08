@@ -17,7 +17,7 @@
 /*REGISTER*/
 
 #define Systick_Timer	    (Internal_BASE + Systick_OFFSET)
-#define SCB_ADDRESS                (Internal_BASE + SCB_OFFSET)
+#define SCB_ADDRESS         (Internal_BASE + SCB_OFFSET)
 /* Define GPIO*/
 
 

@@ -1,6 +1,4 @@
-
-#include "../lib/blinkled/blinkled.h"
-#include "../drivers/system/system.h"
+#include "main.h"
                                      
 void main(void)
 {

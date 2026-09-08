@@ -9,7 +9,7 @@ void system_clock_init(void);
 bool hse_enable(void);
 bool pll_enable(void);
 enum{
-    APB1_PRE = 2, /* AHB clock*/
+    APB1_PRE = 4, /* AHB clock*/
     APB2_PRE = 4
 };
 enum{
