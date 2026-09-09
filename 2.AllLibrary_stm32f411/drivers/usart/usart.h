@@ -154,7 +154,7 @@ struct usart
 void usart_init(struct usart* usart,unsigned long baud);
 int usart_read_ready(struct usart* usart);
 int usart_write_ready(struct usart* usart);
-void usart_write_char(struct usart* usart,char ch);
+void usart_write_byte(struct usart* usart,char ch);
 void usart_write_buf(struct usart* usart,char *buf,size_t len);
 uint8_t usart_read_byte(struct usart* usart);
 

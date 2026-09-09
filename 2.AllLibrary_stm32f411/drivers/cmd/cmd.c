@@ -16,9 +16,9 @@ int _write(int fd,char *ptr,int len)
    {
     if (*ptr == '\n')
     {
-        usart_send_blocking(USART1,'\r');
+        usart_write_byte(USART1,'\r');
     }
-    usart_send_blocking(USART1,*ptr);
+    usart_write_byte(USART1,*ptr);
     i++;
     ptr++;
 

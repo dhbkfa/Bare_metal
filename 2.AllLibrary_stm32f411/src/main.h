@@ -3,5 +3,5 @@
 #include "../lib/blinkled/blinkled.h"
 #include "../drivers/system/system.h"
                                      
-void
+
 #endif
